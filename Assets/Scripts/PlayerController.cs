@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     Vector3 respawnPos;
     private bool isGrounded;
     public ParticleSystem Patriculas;
+    bool jumping = false;
 
     [SerializeField] InputActionReference jump;
     [SerializeField] float speed = 5;
@@ -31,16 +32,16 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
-            rb.AddForce(transform.up * JumpForce, ForceMode.Impulse);
-
+            jumping = true;
+            isGrounded = false;
         }
     }
     public void Respawn()
     {
         gameObject.SetActive(true);
-        rb.velocity = new Vector3(0, 0, 0);
+        rb.velocity = new Vector3(speed, 0, 0);
         rb.angularVelocity = Vector3.zero;
 
         transform.position = respawnPos;
@@ -65,9 +66,15 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        new Vector3(0f, 0f, speed);
+        if (jumping)
+        {
+            rb.AddForce(transform.up * JumpForce, ForceMode.Impulse);
+            jumping = false;
+        }
+
+        new Vector3(speed, 0f, 0f);
         Vector3 v = rb.velocity;
-        rb.velocity = new Vector3(0f, v.y, speed);
+        rb.velocity = new Vector3(speed, v.y, 0f);
 
     }
 

@@ -7,25 +7,25 @@ public class Respawner : MonoBehaviour
     public Player player;
     void Update()
     {
-        if (player != null)
+        if (player.gameObject.activeSelf)
         {
             if (Input.GetKey(KeyCode.R))
             {
                 player.Respawn();
             }
+        }
+        else
+        {
+            
+            StartCoroutine(ExampleCoroutine());
+        }
 
-            else if (!player.gameObject.activeSelf)
-            {
+        IEnumerator ExampleCoroutine()
+        {
+            yield return new WaitForSeconds(0.2f);
+            player.Respawn();
+        }
+    } 
 
-                StartCoroutine(ExampleCoroutine());
-            }
-
-            IEnumerator ExampleCoroutine()
-            {
-                yield return new WaitForSeconds(0.5f);
-                player.Respawn();
-            }
-        }      
-
-    }
+    
 }
