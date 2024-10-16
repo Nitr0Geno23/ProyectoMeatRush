@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
         transform.position = respawnPos;
 
         Patriculas.Stop();
+
+        Physics.gravity = new Vector3(0f, -45f, 0f);
+        GameManager.instance.gravitychanged = false;
+        JumpForce = Mathf.Abs(JumpForce);
+
     }
 
     void OnCollisionExit(Collision collision)
@@ -66,11 +71,27 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (jumping)
+        if (GameManager.instance.GetGravityChanged())
         {
-            rb.AddForce(transform.up * JumpForce, ForceMode.Impulse);
-            jumping = false;
+            if (jumping)
+            {
+
+                rb.AddForce(transform.up * -Mathf.Abs(JumpForce), ForceMode.Impulse);
+                jumping = false;
+            }
         }
+        else 
+        {
+            if (jumping)
+            {
+                rb.AddForce(transform.up * Mathf.Abs(JumpForce), ForceMode.Impulse);
+                jumping = false;
+            }
+        }
+
+
+        //Vector3 v = rb.velocity;
+        //rb.velocity = new Vector3(speed, v.y, 0f); 
 
         new Vector3(speed, 0f, 0f);
         Vector3 v = rb.velocity;
