@@ -88,10 +88,7 @@ public class Player : MonoBehaviour
                 jumping = false;
             }
         }
-
-
-        //Vector3 v = rb.velocity;
-        //rb.velocity = new Vector3(speed, v.y, 0f); 
+ 
 
         new Vector3(speed, 0f, 0f);
         Vector3 v = rb.velocity;
