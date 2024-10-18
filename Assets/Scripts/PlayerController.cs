@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
         transform.position = respawnPos;
 
         Respawner.instance.playerIsReviving = false;
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         Patriculas.Stop();
 

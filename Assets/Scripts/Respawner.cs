@@ -26,8 +26,9 @@ public class Respawner : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.R))
             {
-                player.Respawn();
                 playerIsReviving = true;
+                player.Respawn();
+                
             }
         }
         else
