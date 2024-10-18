@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 3575454741268473120}
   - component: {fileID: 3220292840473921885}
   m_Layer: 0
-  m_Name: Platform (39)
+  m_Name: Plataforma
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

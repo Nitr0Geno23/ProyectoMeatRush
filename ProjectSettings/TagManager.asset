@@ -9,6 +9,7 @@ TagManager:
   - PortalUp
   - PortalRight
   - PortalLeft
+  - Limitador
   layers:
   - Default
   - TransparentFX

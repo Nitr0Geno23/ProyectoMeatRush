@@ -5,6 +5,21 @@ using UnityEngine;
 public class Respawner : MonoBehaviour
 {
     public Player player;
+    public static Respawner instance;
+    public bool playerIsReviving = false;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this; 
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
+    }
+
     void Update()
     {
         if (player.gameObject.activeSelf)
@@ -12,6 +27,7 @@ public class Respawner : MonoBehaviour
             if (Input.GetKey(KeyCode.R))
             {
                 player.Respawn();
+                playerIsReviving = true;
             }
         }
         else

@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
 
         transform.position = respawnPos;
 
+        Respawner.instance.playerIsReviving = false;
+
         Patriculas.Stop();
 
         Physics.gravity = new Vector3(0f, -45f, 0f);
@@ -100,6 +102,7 @@ public class Player : MonoBehaviour
     {
         Patriculas.transform.position = transform.position;
         Patriculas.Play();
+        Respawner.instance.playerIsReviving = true;
 
     }
 
