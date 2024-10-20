@@ -5,17 +5,49 @@ using UnityEngine.SceneManagement;
 
 public class CambioEscena : MonoBehaviour
 {
-
     private void Awake()
     {
-        StartCoroutine(ExampleCoroutine());
+        if (SceneManager.GetActiveScene().name == "SplashScreen")
+        {
+            StartCoroutine(ExampleCoroutine());
+        }
+            
     }
 
     IEnumerator ExampleCoroutine()
     {
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("MenuConGameplay");
-        Debug.Log("entra");
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "MenuConGameplay")
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                SceneManager.LoadScene("Game");
+                Debug.Log("Entra");
+            }
+        }
+
+        if (SceneManager.GetActiveScene().name == "MenuConGameplay")
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                Application.Quit();
+                UnityEditor.EditorApplication.isPlaying = false;
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "Game")
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("MenuConGameplay");
+            }
+        }
+
+
     }
 }
     

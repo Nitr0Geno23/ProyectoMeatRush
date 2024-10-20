@@ -39,26 +39,24 @@ public class Player : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("TriggerJump"))
+        {
+            rb.AddForce(transform.up * Mathf.Abs(JumpForce), ForceMode.Impulse);
+        }
+    }
 
     void Update()
     {
-        if (GameManager.instance.playerIsInMenu == true)
+        if (SceneManager.GetActiveScene().name == "Game")
         {
-            void OnTriggerEnter(Collider other)
+            if (Input.GetKey(KeyCode.Space) && isGrounded)
             {
-                if (other.gameObject.CompareTag("TriggerJump"))
-                {
-                    rb.AddForce(transform.up * Mathf.Abs(JumpForce), ForceMode.Impulse);
-                }
+                jumping = true;
+                isGrounded = false;
             }
         }
-        else if (Input.GetKey(KeyCode.Space) && isGrounded)
-        {
-            jumping = true;
-            isGrounded = false;
-        }
-
-
     }
     public void Respawn()
     {
