@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Sierras : MonoBehaviour
 {
-    public Player player;
     public float speed;
     private Rigidbody rb;
     Vector3 spawnPosition;
@@ -14,18 +13,6 @@ public class Sierras : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         spawnPosition = transform.position;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-            player.Death();
-            collision.gameObject.SetActive(false);
-
-        }
-
     }
 
     private void Update()

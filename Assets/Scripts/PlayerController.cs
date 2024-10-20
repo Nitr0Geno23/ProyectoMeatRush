@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
     private Rigidbody rb;
     Vector3 respawnPos;
     private bool isGrounded;
@@ -27,6 +28,13 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         rb = GetComponent<Rigidbody>();
     }
 
@@ -44,15 +52,9 @@ public class Player : MonoBehaviour
         gameObject.SetActive(true);
         rb.velocity = new Vector3(speed, 0, 0);
         rb.angularVelocity = Vector3.zero;
-
         transform.position = respawnPos;
-
         Respawner.instance.playerIsReviving = false;
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
         Patriculas.Stop();
-
         Physics.gravity = new Vector3(0f, -45f, 0f);
         GameManager.instance.gravitychanged = false;
         JumpForce = Mathf.Abs(JumpForce);
