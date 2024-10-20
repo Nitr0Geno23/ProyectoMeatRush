@@ -36,7 +36,7 @@ public class CambioEscena : MonoBehaviour
             if (Input.GetKey(KeyCode.Escape))
             {
                 Application.Quit();
-                UnityEditor.EditorApplication.isPlaying = false;
+                //UnityEditor.EditorApplication.isPlaying = false;
             }
         }
         else if (SceneManager.GetActiveScene().name == "Game")
