@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public bool gravitychanged = false;
+    public bool gravitychanged = false; 
+    public bool playerIsInMenu = true;
 
     private void Awake()
     {

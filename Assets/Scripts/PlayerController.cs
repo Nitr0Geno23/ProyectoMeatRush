@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
             instance = this;
         }
         else
@@ -40,12 +42,23 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        if (GameManager.instance.playerIsInMenu == true)
+        {
+            void OnTriggerEnter(Collider other)
+            {
+                if (other.gameObject.CompareTag("TriggerJump"))
+                {
+                    rb.AddForce(transform.up * Mathf.Abs(JumpForce), ForceMode.Impulse);
+                }
+            }
+        }
+        else if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             jumping = true;
             isGrounded = false;
         }
+
+
     }
     public void Respawn()
     {
