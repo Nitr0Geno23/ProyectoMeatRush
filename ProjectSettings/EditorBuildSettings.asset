@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game Boy Splash Screen/SplashScreen.unity
+    path: Assets/Scenes/SplashScreen.unity
     guid: 0dbabbaca33daab46aec50291202e3be
   - enabled: 1
     path: Assets/Scenes/MenuConGameplay.unity

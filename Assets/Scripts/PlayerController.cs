@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance;
+    public static List<Player> instances = new();
     private Rigidbody rb;
     Vector3 respawnPos;
     private bool isGrounded;
@@ -28,15 +28,15 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+     
         rb = GetComponent<Rigidbody>();
     }
     void OnTriggerEnter(Collider other)
@@ -47,6 +47,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        instances.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        instances.Remove(this);
+    }
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "Game")

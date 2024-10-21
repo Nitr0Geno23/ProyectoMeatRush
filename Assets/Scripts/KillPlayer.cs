@@ -9,8 +9,8 @@ public class KillPlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
-            Player.instance.Death();
+            collision.gameObject.GetComponent<Player>().Death();
+            //Player.instances[0].Death();
             collision.gameObject.SetActive(false); 
             
         }

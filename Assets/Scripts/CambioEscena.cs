@@ -26,12 +26,20 @@ public class CambioEscena : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                SceneManager.LoadScene("Game");
+                SceneManager.LoadScene("LevelSelecter");
                 Debug.Log("Entra");
             }
         }
 
-        if (SceneManager.GetActiveScene().name == "MenuConGameplay")
+        else if (SceneManager.GetActiveScene().name == "Game")
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("LevelSelecter");
+            }
+        }
+
+        else if (SceneManager.GetActiveScene().name == "MenuConGameplay")
         {
             if (Input.GetKey(KeyCode.Escape))
             {
@@ -39,14 +47,6 @@ public class CambioEscena : MonoBehaviour
                 //UnityEditor.EditorApplication.isPlaying = false;
             }
         }
-        else if (SceneManager.GetActiveScene().name == "Game")
-        {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                SceneManager.LoadScene("MenuConGameplay");
-            }
-        }
-
 
     }
 }
