@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SplashScreen.unity
     guid: 0dbabbaca33daab46aec50291202e3be
   - enabled: 1
+    path: Assets/Scenes/LevelSelecter.unity
+    guid: a3d88ae7a418ccc41b20ccecf5133d28
+  - enabled: 1
     path: Assets/Scenes/MenuConGameplay.unity
     guid: 9f2282736897ca349b3dc50d5fc245b5
   - enabled: 1
