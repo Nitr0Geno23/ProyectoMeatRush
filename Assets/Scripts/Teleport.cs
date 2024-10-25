@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    public Teleport portal;
-    new Vector3 p;
+    public Teleport portal; 
+    private Vector3 destinationPosition;
+    private bool canTeleport = true;
+    public float teleportCooldown = 1f; 
+
     void Start()
     {
-        portal.p = transform.position;        
+        destinationPosition = portal.transform.position;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && canTeleport)
         {
-            Debug.Log("Entra");
-            Player.instances[0].transform.position = portal.p;
+            other.transform.position = destinationPosition;
+            StartCoroutine(TeleportCooldown());
+            portal.DisableTeleportForCooldown();
         }
-        
+    }
 
+    private void DisableTeleportForCooldown()
+    {
+        canTeleport = false;
+        StartCoroutine(TeleportCooldown());
+    }
+
+    private IEnumerator TeleportCooldown()
+    {
+        yield return new WaitForSeconds(teleportCooldown);
+        canTeleport = true;
     }
 }
+

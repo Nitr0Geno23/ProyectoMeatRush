@@ -15,6 +15,14 @@ public class KillPlayer : MonoBehaviour
             
         }
 
+        else if (collision.gameObject.CompareTag("DuplicatePlayer"))
+        {
+            collision.gameObject.GetComponent<Player>().Death();
+            //Player.instances[0].Death();
+            collision.gameObject.SetActive(false);
+
+        }
+
     } 
 
 }

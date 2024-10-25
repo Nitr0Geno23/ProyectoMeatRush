@@ -10,6 +10,7 @@ TagManager:
   - PortalRight
   - PortalLeft
   - Limitador
+  - DuplicatePlayer
   layers:
   - Default
   - TransparentFX
