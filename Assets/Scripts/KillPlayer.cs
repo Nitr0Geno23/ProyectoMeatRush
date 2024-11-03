@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class KillPlayer : MonoBehaviour
 {
-   
+    PowerBoost powerBoost;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().Death();
-            //Player.instances[0].Death();
-            collision.gameObject.SetActive(false); 
-            
+
+            if (powerBoost != null && powerBoost.IsShieldActive())
+            {
+                powerBoost.UseShield();
+            }
+            else 
+            {
+                collision.gameObject.GetComponent<Player>().Death();
+                collision.gameObject.SetActive(false);
+            }
+                      
         }
 
         else if (collision.gameObject.CompareTag("DuplicatePlayer"))
         {
             collision.gameObject.GetComponent<Player>().Death();
-            //Player.instances[0].Death();
             collision.gameObject.SetActive(false);
 
         }
+
+
 
     } 
 

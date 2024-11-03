@@ -8,6 +8,14 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public float speed = 5f;
+    private bool shieldIndicatorVisible = false;
+
+    public void ShowShieldIndicator(bool visible)
+    {
+        shieldIndicatorVisible = visible;
+    }
+
     public static List<Player> instances = new();
     private Rigidbody rb;
     Vector3 respawnPos;
@@ -16,7 +24,6 @@ public class Player : MonoBehaviour
     bool jumping = false;
 
     [SerializeField] InputActionReference jump;
-    [SerializeField] float speed = 5;
     [SerializeField] float JumpForce;
 
     void Start()
@@ -27,18 +34,10 @@ public class Player : MonoBehaviour
     }
 
     private void Awake()
-    {
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
-     
+    {  
         rb = GetComponent<Rigidbody>();
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("TriggerJump"))
@@ -69,6 +68,7 @@ public class Player : MonoBehaviour
     }
     public void Respawn()
     {
+        speed = 5f;
         gameObject.SetActive(true);
         rb.velocity = new Vector3(speed, 0, 0);
         rb.angularVelocity = Vector3.zero;
