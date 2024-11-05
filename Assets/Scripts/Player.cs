@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,20 +7,15 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public GameObject[] Items;
     public float speed = 5f;
-    private bool shieldIndicatorVisible = false;
-
-    public void ShowShieldIndicator(bool visible)
-    {
-        shieldIndicatorVisible = visible;
-    }
 
     public static List<Player> instances = new();
     private Rigidbody rb;
     Vector3 respawnPos;
     private bool isGrounded;
     public ParticleSystem Patriculas;
-    bool jumping = false;
+    public bool jumping = false;
 
     [SerializeField] InputActionReference jump;
     [SerializeField] float JumpForce;
@@ -29,12 +23,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         respawnPos = transform.position;
-
         Patriculas.Stop();
     }
 
     private void Awake()
-    {  
+    {
         rb = GetComponent<Rigidbody>();
     }
 
@@ -55,20 +48,22 @@ public class Player : MonoBehaviour
     {
         instances.Remove(this);
     }
+
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Game")
+        if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "Game 2" || SceneManager.GetActiveScene().name == "Game 3")
         {
             if (Input.GetKey(KeyCode.Space) && isGrounded)
             {
                 jumping = true;
-                isGrounded = false;
+                isGrounded = false; 
             }
         }
     }
+
     public void Respawn()
     {
-        speed = 5f;
+        speed = 7f;
         gameObject.SetActive(true);
         rb.velocity = new Vector3(speed, 0, 0);
         rb.angularVelocity = Vector3.zero;
@@ -79,35 +74,40 @@ public class Player : MonoBehaviour
         GameManager.instance.gravitychanged = false;
         JumpForce = Mathf.Abs(JumpForce);
 
+        foreach (GameObject item in Items)
+        {
+            item.SetActive(true);
+        }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.gameObject.tag == "Ground")
+        if (collision.collider.CompareTag("Ground"))
         {
             isGrounded = false;
-  
         }
     }
+
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.tag == "Ground")
+        if (collision.collider.CompareTag("Ground"))
         {
-            isGrounded = true;
+            isGrounded = true; 
+            jumping = false;  
         }
     }
+
     private void FixedUpdate()
     {
         if (GameManager.instance.GetGravityChanged())
         {
             if (jumping)
             {
-
                 rb.AddForce(transform.up * -Mathf.Abs(JumpForce), ForceMode.Impulse);
-                jumping = false;
+                jumping = false; 
             }
         }
-        else 
+        else
         {
             if (jumping)
             {
@@ -115,12 +115,9 @@ public class Player : MonoBehaviour
                 jumping = false;
             }
         }
- 
 
-        new Vector3(speed, 0f, 0f);
         Vector3 v = rb.velocity;
         rb.velocity = new Vector3(speed, v.y, 0f);
-
     }
 
     public void Death()
@@ -128,7 +125,5 @@ public class Player : MonoBehaviour
         Patriculas.transform.position = transform.position;
         Patriculas.Play();
         Respawner.instance.playerIsReviving = true;
-
     }
-
 }

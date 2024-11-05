@@ -14,7 +14,7 @@ public enum GravityDirection
 public class GravityChanger : MonoBehaviour
 {
     
-    private GravityDirection gravityDirection = GravityDirection.down;
+    private GravityDirection gravityDirection;
     void OnTriggerEnter(Collider collider)
     {
         if (GameManager.instance.GetGravityChanged() == false)

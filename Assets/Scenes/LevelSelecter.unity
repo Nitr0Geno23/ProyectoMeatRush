@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomScale: {x: 0.7, y: 0.7, z: 0.7}
-  levelScene: Game2
+  levelScene: Game 2
 --- !u!1 &292952133
 GameObject:
   m_ObjectHideFlags: 0
