@@ -33,10 +33,15 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("TriggerJump"))
+
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            rb.AddForce(transform.up * Mathf.Abs(JumpForce), ForceMode.Impulse);
+            if (other.gameObject.CompareTag("TriggerJump"))
+            {
+                rb.AddForce(transform.up * Mathf.Abs(JumpForce), ForceMode.Impulse);
+            }
         }
+        
     }
 
     private void OnEnable()
@@ -59,24 +64,35 @@ public class Player : MonoBehaviour
                 isGrounded = false; 
             }
         }
+
+        Debug.Log("Actual speed = " + speed);
     }
 
     public void Respawn()
     {
-        speed = 7f;
-        gameObject.SetActive(true);
-        rb.velocity = new Vector3(speed, 0, 0);
-        rb.angularVelocity = Vector3.zero;
-        transform.position = respawnPos;
-        Respawner.instance.playerIsReviving = false;
-        Patriculas.Stop();
         Physics.gravity = new Vector3(0f, -45f, 0f);
         GameManager.instance.gravitychanged = false;
+
+        gameObject.SetActive(true);
+        speed = 7f;
+        rb.velocity = new Vector3(speed, 0, 0);
+        rb.angularVelocity = Vector3.zero;
+
+        transform.position = respawnPos;
+
+        Respawner.instance.playerIsReviving = false;
+        
         JumpForce = Mathf.Abs(JumpForce);
+        Patriculas.Stop();
+        
+        
+
 
         foreach (GameObject item in Items)
         {
-            item.SetActive(true);
+
+            item.GetComponent<PowerBoost>().Restart();
+            
         }
     }
 
@@ -124,6 +140,9 @@ public class Player : MonoBehaviour
     {
         Patriculas.transform.position = transform.position;
         Patriculas.Play();
+
+        
+
         Respawner.instance.playerIsReviving = true;
     }
 }

@@ -6,16 +6,28 @@ public class PowerBoost : MonoBehaviour
     public float speedMultiplier = 2f; 
     public float boostDuration = 3f;    
 
-    public Player player; 
+    public Player player;
+
+    Coroutine coroutine;
+
+    public void Restart()
+    {
+        StopCoroutine(coroutine);
+        gameObject.GetComponent<BoxCollider>().enabled = true;
+        gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player"))
         {
-            StartCoroutine(ApplyBoost());
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+
+            coroutine = StartCoroutine(ApplyBoost());
         }
 
-        gameObject.SetActive(false);
+        
     }
 
     private IEnumerator ApplyBoost()
@@ -30,4 +42,5 @@ public class PowerBoost : MonoBehaviour
         player.speed /= speedMultiplier;
 
     }
+
 }

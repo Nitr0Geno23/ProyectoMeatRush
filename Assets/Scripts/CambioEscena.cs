@@ -31,7 +31,7 @@ public class CambioEscena : MonoBehaviour
             }
         }
 
-        else if (SceneManager.GetActiveScene().name == "Game")
+        else if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "Game 2" || SceneManager.GetActiveScene().name == "Game 3")
         {
             if (Input.GetKey(KeyCode.Escape))
             {
