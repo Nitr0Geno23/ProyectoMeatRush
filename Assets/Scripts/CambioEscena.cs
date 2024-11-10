@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CambioEscena : MonoBehaviour
 {
+    public Canvas pauseMenu;
     private void Awake()
     {
         if (SceneManager.GetActiveScene().name == "SplashScreen")
@@ -35,7 +36,7 @@ public class CambioEscena : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Escape))
             {
-                SceneManager.LoadScene("LevelSelecter");
+                pauseMenu.gameObject.SetActive(true);
             }
         }
 
@@ -47,7 +48,13 @@ public class CambioEscena : MonoBehaviour
                 //UnityEditor.EditorApplication.isPlaying = false;
             }
         }
-
+        else if (SceneManager.GetActiveScene().name == "LevelSelecter")
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("MenuConGameplay");
+            }
+        }
     }
 }
     
