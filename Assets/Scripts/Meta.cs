@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Meta : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class Meta : MonoBehaviour
         {
             canvasVictory.gameObject.SetActive(true);
 
-            //StartCoroutine(SelectLevel());
-
+            StartCoroutine(RespawnAgain());
         }
 
-        //IEnumerator()
+        IEnumerator RespawnAgain()
+        {
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("LevelSelecter");
+        }
     }
 }
