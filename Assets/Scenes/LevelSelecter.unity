@@ -1446,7 +1446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9, y: -125}
+  m_AnchoredPosition: {x: -12, y: -125}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378047510
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -35.85013, w: 0}
+  m_margin: {x: 0, y: 0, z: -22.896301, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2031,7 +2031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19, y: -127.03885}
+  m_AnchoredPosition: {x: -6, y: -127.03885}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839595298
@@ -2054,7 +2054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NOMBRE
+  m_text: PIXEL HOP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4621c220a807b1247baf77ab5616b9cb, type: 2}
   m_sharedMaterial: {fileID: -3608376471446089650, guid: 4621c220a807b1247baf77ab5616b9cb,
