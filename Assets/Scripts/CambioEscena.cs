@@ -23,16 +23,8 @@ public class CambioEscena : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "MenuConGameplay")
-        {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                SceneManager.LoadScene("LevelSelecter");
-                Debug.Log("Entra");
-            }
-        }
 
-        else if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "Game 2" || SceneManager.GetActiveScene().name == "Game 3")
+        if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "Game 2" || SceneManager.GetActiveScene().name == "Game 3")
         {
             if (Input.GetKey(KeyCode.Escape))
             {
@@ -40,14 +32,7 @@ public class CambioEscena : MonoBehaviour
             }
         }
 
-        else if (SceneManager.GetActiveScene().name == "MenuConGameplay")
-        {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                Application.Quit();
-                //UnityEditor.EditorApplication.isPlaying = false;
-            }
-        }
+        
         else if (SceneManager.GetActiveScene().name == "LevelSelecter")
         {
             if (Input.GetKey(KeyCode.Escape))
@@ -56,6 +41,27 @@ public class CambioEscena : MonoBehaviour
             }
         }
     }
+
+    
+    public void PlayScene()
+    {
+        SceneManager.LoadScene("LevelSelecter");
+
+    }
+
+    public void SettingsScene()
+    {
+        pauseMenu.gameObject.SetActive(true);
+
+    }
+    public void Quit()
+    {
+
+        Application.Quit();
+    }
+
+
+
 }
     
 
