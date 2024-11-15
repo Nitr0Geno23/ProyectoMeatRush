@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CambioEscena : MonoBehaviour
 {
     public Canvas pauseMenu;
+    public bool settingsActive = true;
     private void Awake()
     {
         if (SceneManager.GetActiveScene().name == "SplashScreen")
@@ -26,9 +27,20 @@ public class CambioEscena : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "Game 2" || SceneManager.GetActiveScene().name == "Game 3")
         {
-            if (Input.GetKey(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                pauseMenu.gameObject.SetActive(true);
+                //if (!settingsActive)
+                //{
+                //    Time.timeScale = 1f;
+                //}
+                //else 
+                //{
+                //    Time.timeScale = 0f;
+                //}
+                
+                
+                pauseMenu.gameObject.SetActive(settingsActive);
+                settingsActive = !settingsActive;
             }
         }
 
@@ -49,16 +61,6 @@ public class CambioEscena : MonoBehaviour
 
     }
 
-    public void SettingsScene()
-    {
-        pauseMenu.gameObject.SetActive(true);
-
-    }
-    public void Quit()
-    {
-
-        Application.Quit();
-    }
 
 
 

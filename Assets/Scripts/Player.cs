@@ -64,8 +64,6 @@ public class Player : MonoBehaviour
                 isGrounded = false; 
             }
         }
-
-        Debug.Log("Actual speed = " + speed);
     }
 
     public void Respawn()

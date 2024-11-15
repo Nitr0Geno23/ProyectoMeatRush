@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool gravitychanged = false;
 
+
     private void Awake()
     {
         if (instance == null)
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
 
     public void GravityHasChanged()

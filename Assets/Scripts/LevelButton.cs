@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -9,6 +10,7 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Vector3 originalScale;
 
     public string levelScene;
+
 
     private void Start()
     {
@@ -25,13 +27,16 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         transform.localScale = originalScale;
     }
 
+    
     public void OnPointerClick(PointerEventData eventData)
     {
+
         if (!string.IsNullOrEmpty(levelScene))
         {
             SceneManager.LoadScene(levelScene);
         }
-
+        
     }
+
 }
 
