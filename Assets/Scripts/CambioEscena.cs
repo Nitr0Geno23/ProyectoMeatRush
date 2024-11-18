@@ -29,16 +29,16 @@ public class CambioEscena : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                //if (!settingsActive)
-                //{
-                //    Time.timeScale = 1f;
-                //}
-                //else 
-                //{
-                //    Time.timeScale = 0f;
-                //}
-                
-                
+                if (!settingsActive)
+                {
+                    Time.timeScale = 1f;
+                }
+                else
+                {
+                    Time.timeScale = 0f;
+                }
+
+
                 pauseMenu.gameObject.SetActive(settingsActive);
                 settingsActive = !settingsActive;
             }
