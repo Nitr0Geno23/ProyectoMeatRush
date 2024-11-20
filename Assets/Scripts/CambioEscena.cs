@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CambioEscena : MonoBehaviour
 {
-    public Canvas pauseMenu;
-    public bool settingsActive = true;
+
     private void Awake()
     {
         if (SceneManager.GetActiveScene().name == "SplashScreen")
@@ -25,27 +24,8 @@ public class CambioEscena : MonoBehaviour
     private void Update()
     {
 
-        if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "Game 2" || SceneManager.GetActiveScene().name == "Game 3")
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (!settingsActive)
-                {
-                    Time.timeScale = 1f;
-                }
-                else
-                {
-                    Time.timeScale = 0f;
-                }
-
-
-                pauseMenu.gameObject.SetActive(settingsActive);
-                settingsActive = !settingsActive;
-            }
-        }
-
         
-        else if (SceneManager.GetActiveScene().name == "LevelSelecter")
+        if (SceneManager.GetActiveScene().name == "LevelSelecter")
         {
             if (Input.GetKey(KeyCode.Escape))
             {

@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        if (Time.timeScale != 1f)
+        {
+            Time.timeScale = 1f;
+        }
         respawnPos = transform.position;
         Patriculas.Stop();
     }
