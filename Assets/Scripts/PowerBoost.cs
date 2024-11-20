@@ -12,7 +12,11 @@ public class PowerBoost : MonoBehaviour
 
     public void Restart()
     {
-        StopCoroutine(coroutine);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        
         gameObject.GetComponent<BoxCollider>().enabled = true;
         gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
     }
