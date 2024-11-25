@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEditor;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] InputActionReference jump;
     [SerializeField] float JumpForce;
+    AudioManager audioManager;
 
     void Start()
     {
@@ -33,6 +35,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        Debug.Log("Audiomanager is" + audioManager);
     }
 
     void OnTriggerEnter(Collider other)
@@ -42,6 +46,7 @@ public class Player : MonoBehaviour
         {
             if (other.gameObject.CompareTag("TriggerJump"))
             {
+                audioManager.PlaySFX(audioManager.jump);
                 rb.AddForce(transform.up * Mathf.Abs(JumpForce), ForceMode.Impulse);
             }
         }
@@ -121,21 +126,24 @@ public class Player : MonoBehaviour
         {
             if (jumping)
             {
+                audioManager.PlaySFX(audioManager.jump);
                 rb.AddForce(transform.up * -Mathf.Abs(JumpForce), ForceMode.Impulse);
-                jumping = false; 
+                jumping = false;
             }
         }
         else
         {
             if (jumping)
             {
+                audioManager.PlaySFX(audioManager.jump);
                 rb.AddForce(transform.up * Mathf.Abs(JumpForce), ForceMode.Impulse);
-                jumping = false;
+                jumping = false;   
             }
         }
 
         Vector3 v = rb.velocity;
         rb.velocity = new Vector3(speed, v.y, 0f);
+        
     }
 
     public void Death()
@@ -143,6 +151,10 @@ public class Player : MonoBehaviour
         Patriculas.transform.position = transform.position;
         Patriculas.Play();
 
+        
+        audioManager.PlaySFX(audioManager.death);
+       
+        
         
 
         Respawner.instance.playerIsReviving = true;

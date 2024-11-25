@@ -8,13 +8,18 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     public Vector3 zoomScale = new Vector3(1.1f, 1.1f, 1.1f);
     private Vector3 originalScale;
+    AudioManager audioManager;
 
     public string levelScene;
 
-
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Start()
     {
         originalScale = transform.localScale;
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -30,6 +35,7 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     
     public void OnPointerClick(PointerEventData eventData)
     {
+        audioManager.PlaySFX(audioManager.buttonPress);
 
         if (!string.IsNullOrEmpty(levelScene))
         {

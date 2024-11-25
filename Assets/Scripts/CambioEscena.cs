@@ -41,8 +41,10 @@ public class CambioEscena : MonoBehaviour
 
     }
 
-
-
+    public void ExitGame()
+    { 
+        Application.Quit();
+    }
 
 }
     

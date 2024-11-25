@@ -12,6 +12,7 @@ TagManager:
   - Limitador
   - DuplicatePlayer
   - Meta
+  - Audio
   layers:
   - Default
   - TransparentFX

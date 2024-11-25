@@ -11,13 +11,13 @@ public class Settings : MonoBehaviour
 {
     public Animator animator;
     public int settings = 0;
-    public bool settingsActive = false;
+    public bool settingsActive = true;
     public GameObject pauseMenu;
-
+    AudioManager audioManager;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -40,6 +40,7 @@ public class Settings : MonoBehaviour
                 ResetMenuAnimations();
                 pauseMenu.gameObject.SetActive(settingsActive);
                 settingsActive = !settingsActive;
+                audioManager.PlaySFX(audioManager.openSettings);
             }
         }
     }
@@ -71,6 +72,7 @@ public class Settings : MonoBehaviour
 
     public void GoMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MenuConGameplay");
         settingsActive = false;
         pauseMenu.gameObject.SetActive(settingsActive);

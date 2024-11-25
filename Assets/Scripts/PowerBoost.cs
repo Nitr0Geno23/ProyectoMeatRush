@@ -4,12 +4,17 @@ using UnityEngine;
 public class PowerBoost : MonoBehaviour
 {
     public float speedMultiplier = 2f; 
-    public float boostDuration = 3f;    
+    public float boostDuration = 3f;
+    AudioManager audioManager;
 
     public Player player;
 
     Coroutine coroutine;
 
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public void Restart()
     {
         if (coroutine != null)
@@ -29,6 +34,8 @@ public class PowerBoost : MonoBehaviour
             gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
 
             coroutine = StartCoroutine(ApplyBoost());
+
+            audioManager.PlaySFX(audioManager.itemPickup);
         }
 
         
