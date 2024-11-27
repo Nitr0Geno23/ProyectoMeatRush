@@ -19,7 +19,7 @@ public class Meta : MonoBehaviour
         IEnumerator RespawnAgain()
         {
             yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("LevelSelecter");
+            SceneManager.LoadScene("MenuConGameplay");
         }
     }
 }

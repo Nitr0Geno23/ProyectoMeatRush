@@ -14,7 +14,14 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        GameObject g = GameObject.FindGameObjectWithTag("Audio");
+
+        if (g != null)
+        {
+            audioManager = g.GetComponent<AudioManager>();
+        }
+
+        
     }
     private void Start()
     {

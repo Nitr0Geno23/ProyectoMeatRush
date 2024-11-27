@@ -1940,7 +1940,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 468595250}
   SFXSource: {fileID: 350950994}
-  backgroundMusic: {fileID: 8300000, guid: 93447c219e1a2494f9d4bc0afdab51f0, type: 3}
+  backgroundMusic:
+  - {fileID: 8300000, guid: 93447c219e1a2494f9d4bc0afdab51f0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 26a3ecfe4ead49940b3a4c4489e8187c, type: 3}
   victoryMusic: {fileID: 0}
   death: {fileID: 8300000, guid: 8b4d4b29a5c77f94f84c7318cacf9c85, type: 3}
   jump: {fileID: 8300000, guid: a793256f208d4884591970b384337478, type: 3}
@@ -1956,7 +1960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826290757}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 434.91504, y: 217.96562, z: -30.989914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3705,5 +3709,5 @@ SceneRoots:
   - {fileID: 167524825}
   - {fileID: 115936301}
   - {fileID: 615303009}
-  - {fileID: 826290759}
   - {fileID: 450738560}
+  - {fileID: 826290759}

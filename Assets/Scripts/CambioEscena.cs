@@ -12,7 +12,6 @@ public class CambioEscena : MonoBehaviour
         {
             StartCoroutine(ExampleCoroutine());
         }
-            
     }
 
     IEnumerator ExampleCoroutine()

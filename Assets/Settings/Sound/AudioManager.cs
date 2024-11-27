@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("----------Music----------")]
 
-    public AudioClip backgroundMusic;
+    public AudioClip[] backgroundMusic;
     public AudioClip victoryMusic;
 
     [Header("----------SFX----------")]
@@ -22,9 +23,43 @@ public class AudioManager : MonoBehaviour
     public AudioClip openSettings;
 
     // Start is called before the first frame update
+    public static AudioManager instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        { 
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
-        musicSource.clip = backgroundMusic;
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            musicSource.Stop();
+            musicSource.clip = backgroundMusic[0];
+        }
+        else if (SceneManager.GetActiveScene().name == "Game 2")
+        {
+            musicSource.Stop();
+            musicSource.clip = backgroundMusic[1];
+        }
+        else if (SceneManager.GetActiveScene().name == "Game 3")
+        {
+            musicSource.Stop();
+            musicSource.clip = backgroundMusic[2];
+        }
+        else if (SceneManager.GetActiveScene().name == "MenuConGameplay")
+        {
+            musicSource.Stop();
+            musicSource.clip = backgroundMusic[3];
+        }
+
+
         musicSource.Play();
     }
 
