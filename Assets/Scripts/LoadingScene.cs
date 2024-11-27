@@ -73,7 +73,7 @@ public class LoadingScene : MonoBehaviour
         }
     }
 
-    [MenuItem("LoadingScene/Debug/Change to OutdoorsScene")]
+    //[MenuItem("LoadingScene/Debug/Change to OutdoorsScene")]
     static public void DebugChangeToOutDoorScene()
     {
         LoadingScene.instance.LoadScene("Game");

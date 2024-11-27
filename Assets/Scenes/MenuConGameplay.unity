@@ -1942,8 +1942,8 @@ MonoBehaviour:
   SFXSource: {fileID: 350950994}
   backgroundMusic:
   - {fileID: 8300000, guid: 93447c219e1a2494f9d4bc0afdab51f0, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 9bc186c9bf4350c4784a60aa2f1bc05f, type: 3}
+  - {fileID: 8300000, guid: 50f2f9ee0fde1144d88dcea3cb8da179, type: 3}
   - {fileID: 8300000, guid: 26a3ecfe4ead49940b3a4c4489e8187c, type: 3}
   victoryMusic: {fileID: 0}
   death: {fileID: 8300000, guid: 8b4d4b29a5c77f94f84c7318cacf9c85, type: 3}
@@ -2396,7 +2396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652d74133bce9534d80afec44667b3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomScale: {x: 0.7, y: 0.7, z: 0.7}
+  zoomScale: {x: 1.1, y: 1.1, z: 1.1}
   levelScene: 
 --- !u!1 &1706012117
 GameObject:
@@ -2679,7 +2679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652d74133bce9534d80afec44667b3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomScale: {x: 0.7, y: 0.7, z: 0.7}
+  zoomScale: {x: 1.1, y: 1.1, z: 1.1}
   levelScene: 
 --- !u!1 &1807759745
 GameObject:
@@ -3155,7 +3155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652d74133bce9534d80afec44667b3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomScale: {x: 0.7, y: 0.7, z: 0.7}
+  zoomScale: {x: 1.1, y: 1.1, z: 1.1}
   levelScene: 
 --- !u!1001 &1887158878
 PrefabInstance:

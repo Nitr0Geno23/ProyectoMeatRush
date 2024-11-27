@@ -38,22 +38,8 @@ public class AudioManager : MonoBehaviour
     }
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "Game")
-        {
-            musicSource.Stop();
-            musicSource.clip = backgroundMusic[0];
-        }
-        else if (SceneManager.GetActiveScene().name == "Game 2")
-        {
-            musicSource.Stop();
-            musicSource.clip = backgroundMusic[1];
-        }
-        else if (SceneManager.GetActiveScene().name == "Game 3")
-        {
-            musicSource.Stop();
-            musicSource.clip = backgroundMusic[2];
-        }
-        else if (SceneManager.GetActiveScene().name == "MenuConGameplay")
+
+        if (SceneManager.GetActiveScene().name == "MenuConGameplay")
         {
             musicSource.Stop();
             musicSource.clip = backgroundMusic[3];
@@ -62,6 +48,28 @@ public class AudioManager : MonoBehaviour
 
         musicSource.Play();
     }
+
+    public void ChangeMusicLevel1()
+    {
+        musicSource.Stop();
+        musicSource.clip = backgroundMusic[0];
+        musicSource.Play();
+    }
+
+    public void ChangeMusicLevel2()
+    {
+        musicSource.Stop();
+        musicSource.clip = backgroundMusic[1];
+        musicSource.Play();
+    }
+
+    public void ChangeMusicLevel3()
+    {
+        musicSource.Stop();
+        musicSource.clip = backgroundMusic[2];
+        musicSource.Play();
+    }
+
 
     public void PlaySFX(AudioClip clip)
     { 
