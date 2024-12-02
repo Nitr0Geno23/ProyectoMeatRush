@@ -45,6 +45,24 @@ public class Settings : MonoBehaviour
         }
     }
 
+    public void SettingsOnMenu()
+    {
+        if (!settingsActive)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+
+
+        ResetMenuAnimations();
+        pauseMenu.gameObject.SetActive(settingsActive);
+        settingsActive = !settingsActive;
+        audioManager.PlaySFX(audioManager.openSettings);
+    }
+
     private void ResetMenuAnimations()
     {  
 

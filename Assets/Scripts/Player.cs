@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        Debug.Log("Audiomanager is" + audioManager);
     }
 
     void OnTriggerEnter(Collider other)
